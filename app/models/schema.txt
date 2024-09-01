@@ -1,0 +1,73 @@
+# This file contains the schema for the database
+
+# The user table contains the following columns:
+user_id: the unique identifier for the staff member
+full_name: the full name of the staff member
+email: the email address of the staff member
+phone_number: the phone number of the staff member
+address: the address of the staff member
+gender: the staff gender (male/famle)
+role: the role of the user member (staff/admin)
+job_title: the job title of the staff member
+password: the password of the staff member (hashed)
+
+
+# The ambulance table contains the following columns:
+ambulance_id: the unique identifier for the ambulance
+ambulance_number: the plate number of the ambulance
+ambulance_driver: the driver of the ambulance
+ambulance_status: the status of the ambulance (available/unavailable)
+ambulance_capacity: the capacity of the ambulance
+ambulance_city_location: the location of the ambulance
+ambulance_purches_date: the date the ambulance was purchased
+ambulance_maintenance_date: the date the ambulance was last maintained
+
+
+# The hospital table contains the following columns:
+hospital_id: the unique identifier for the hospital
+hospital_name: the name of the hospital
+hospital_address: the address of the hospital
+hospital_city: the city where the hospital is located
+hospital_phone_number: the phone number of the hospital
+hospital_number_of_beds: the number of beds in the hospital
+hospital_advanced_equipment: the advanced equipment available in the hospital
+
+# The ambulance_request table contains the following columns:
+request_id: the unique identifier for the request
+caller_name: the name of the caller
+caller_phone_number: the phone number of the caller
+caller_city: the city where the caller is located
+caller_location: the location of the caller
+pation_name: the name of the patient
+pation_condition: the condition of the patient
+notes: any additional notes
+request_status: the status of the request (pending/accepted/rejected)
+
+
+# The Pations report table contains the following columns:
+report_id: (Primary Key, Auto-incremented Integer) A unique identifier for each patient report.
+patient_id: (Foreign Key, Integer) References the unique ID of the patient in the patients table.
+ambulance_id: (Foreign Key, Integer) References the ambulance that attended to the patient, linking to the ambulances table.
+incident_location: (String, 255) The location where the ambulance picked up the patient.
+pickup_time: (DateTime) The exact time when the patient was picked up by the ambulance.
+hospital_id: (Foreign Key, Integer) References the hospital where the patient was taken, linking to the hospitals table.
+dropoff_time: (DateTime) The time when the patient was dropped off at the hospital.
+diagnosis: (Text) A brief summary of the patient’s condition or diagnosis at the time of the report.
+treatment_given: (Text) Details of any treatment provided by the ambulance team during transport.
+status: (String, 50) The current status of the patient (e.g., "Stable," "Critical," "Deceased").
+created_at: (DateTime) The timestamp for when the report was created.
+updated_at: (DateTime) The timestamp for when the report was last updated.
+
+# The ambulance_report table contains the following columns:
+ambulance_id: (Foreign Key, Integer)A unique identifier for each ambulance report.
+driver_id: (Foreign Key, Integer) References the unique ID of the ambulance in the ambulances table.
+trip_start_time (DateTime): References the unique ID of the driver in the drivers table.
+trip_end_time (DateTime): The time when the ambulance started the trip.
+distance_covered (Float): The time when the ambulance completed the trip.
+fuel_consumed (Float): The total distance covered by the ambulance during the trip, in kilometers or miles.
+traffic_conditions (String, 100): The amount of fuel consumed during the trip, in liters or gallons.
+route_taken (Text): A brief description of the traffic conditions encountered during the trip (e.g., "Heavy Traffic," "Clear").
+trip_status (String, 50): A description or list of waypoints detailing the route taken by the ambulance.
+The status of the trip (e.g., "Completed_," "In Progress," "Cancelled").
+created_at (DateTime): The timestamp for when the report was created.
+updated_at (DateTime): The timestamp for when the report was last updated.

@@ -22,3 +22,5 @@ rad.json
 TestResults.xml
 # The env files
 serverEnv/
+# The vs code files
+__pycache__/
